@@ -10,7 +10,8 @@ struct IndexController: RouteCollection {
         routes.get("login", use: loginTmpHandler)
         routes.post("login", use: loginTmpPostHandler)
         // Authenticated
-        let authGroup = routes.grouped(UserAuthSessionsMiddleware(apiUrl: "http://localhost:8080", redirectPath: "/login"))
+//        let authGroup = routes.grouped(UserAuthSessionsMiddleware(apiUrl: "http://localhost:8080", redirectPath: "/login"))
+        let authGroup = routes.grouped(UserAuthSessionsMiddleware(apiUrl: "http://172.20.12.64:21000", redirectPath: "/login"))
         authGroup.post("logout", use: logoutTmpHandler)
         authGroup.get(use: overviewHandler)
     }
